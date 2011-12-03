@@ -39,8 +39,8 @@ PRODUCT_COPY_FILES += \
 
 #BT init
 #FIXME: BT init workaround
-PRODUCT_COPY_FILES += \
-    device/lge/pecan/files/etc/init.d/30initbt:system/etc/init.d/30initbt \
+#PRODUCT_COPY_FILES += \
+    #device/lge/pecan/files/etc/init.d/30initbt:system/etc/init.d/30initbt \
 
 # Wifi
 PRODUCT_COPY_FILES += \
