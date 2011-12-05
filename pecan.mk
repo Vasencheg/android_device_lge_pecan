@@ -16,6 +16,10 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     FM \
+    gps.pecan \
+    copybit.pecan \
+    bdaddr_read \
+    gadget_id
 
 #    gralloc.pecan \
 #    copybit.pecan
@@ -34,13 +38,21 @@ PRODUCT_COPY_FILES += \
 
 #GPS
 #FIXME: remove blob, we should build some how
-PRODUCT_COPY_FILES += \
-    device/lge/pecan/prebuilt/gps.default.so:system/lib/hw/gps.default.so \
+#PRODUCT_COPY_FILES += \
+    #device/lge/pecan/prebuilt/gps.default.so:system/lib/hw/gps.default.so \
 
 #BT init
 #FIXME: BT init workaround
 #PRODUCT_COPY_FILES += \
-    #device/lge/pecan/files/etc/init.d/30initbt:system/etc/init.d/30initbt \
+       #device/lge/pecan/files/etc/init.d/30initbt:system/etc/init.d/30initbt \
+
+#EGL
+PRODUCT_COPY_FILES += \
+    device/lge/pecan/files/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
+
+#BT
+PRODUCT_COPY_FILES += \
+    device/lge/pecan/files/etc/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
 
 # Wifi
 PRODUCT_COPY_FILES += \
