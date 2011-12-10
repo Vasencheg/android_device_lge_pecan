@@ -1,5 +1,5 @@
 USE_CAMERA_STUB := false
-BOARD_USE_FROYO_LIBCAMERA := true
+#BOARD_USE_FROYO_LIBCAMERA := true
 
 # inherit from the proprietary version
 -include vendor/lge/pecan/BoardConfigVendor.mk
@@ -28,8 +28,10 @@ TARGET_OTA_ASSERT_DEVICE := pecan
 BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QCOM_LIBS := true
 BOARD_USES_QCOM_LIBRPC := true
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_BCM := true
+#BOARD_HAVE_BLUETOOTH := true
+#FIXME: bluetooth disabled cuz of compilation error
+BOARD_HAVE_BLUETOOTH := false
+#BOARD_HAVE_BLUETOOTH_BCM := true
 
 BOARD_GPS_LIBRARIES := libgps librpc
 BOARD_USES_QCOM_GPS := true
@@ -72,11 +74,15 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 0x0c800000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x0bd80000
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-WITH_JIT := true
-ENABLE_JSC_JIT := true
-JS_ENGINE := v8
+#FIXME: should be true but there are compilation errors
+WITH_JIT := false
+ENABLE_JSC_JIT := false
+#JS_ENGINE := v8
 
-TARGET_PROVIDES_LIBAUDIO := true
+#touchscreen
+BOARD_USE_LEGACY_TOUCHSCREEN := true
+
+TARGET_PROVIDES_LIBAUDIO := false
 
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
@@ -87,3 +93,5 @@ TARGET_PREBUILT_KERNEL := device/lge/pecan/kernel
 #BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
 #BOARD_HAS_LARGE_FILESYSTEM := true
+
+CYANOGEN_NIGHTLY=true

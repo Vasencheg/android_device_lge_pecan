@@ -1,6 +1,6 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/lge/pecan/overlay
+#DEVICE_PACKAGE_OVERLAYS += device/lge/pecan/overlay
 
 $(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
 
@@ -17,7 +17,6 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     FM \
     gps.pecan \
-    copybit.pecan \
     bdaddr_read \
     gadget_id
 
