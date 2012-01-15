@@ -19,6 +19,10 @@ BOARD_NO_RGBX_8888 := true
 BOARD_USE_NASTY_PTHREAD_CREATE_HACK := true
 TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 
+BOARD_EGL_CFG := device/lge/pecan/configs/egl.cfg
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
+TARGET_SPECIFIC_HEADER_PATH := device/lge/pecan/include
+
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
 TARGET_USES_OLD_LIBSENSORS_HAL:=true
@@ -31,12 +35,17 @@ BOARD_USES_QCOM_LIBRPC := true
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
+#TO TEST
+BOARD_FORCE_STATIC_A2DP := true
+
 BOARD_GPS_LIBRARIES := libgps librpc
 BOARD_USES_QCOM_GPS := true
 BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := pecan
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_CUSTOM_USB_CONTROLLER := ../../device/lge/pecan/netd/UsbController.cpp
+BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
 
 # VER_0_6_X does not search networks
 WPA_SUPPLICANT_VERSION := VER_0_5_X

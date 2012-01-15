@@ -4,6 +4,10 @@ DEVICE_PACKAGE_OVERLAYS += device/lge/pecan/overlay
 
 $(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
 
+#2D properiaty
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/hw/gralloc.pecan.so:/system/lib/hw/gralloc.pecan.so \
+
 PRODUCT_PACKAGES += \
     librs_jni \
     libaudio \
@@ -16,6 +20,11 @@ PRODUCT_PACKAGES += \
     LiveWallpapers \
     LiveWallpapersPicker \
     FM \
+    gps.pecan \
+    copybit.msm7k \
+    bdaddr_read \
+    gadget_id \
+    gralloc.pecan \
 
 #    gralloc.pecan \
 #    copybit.pecan
@@ -34,8 +43,8 @@ PRODUCT_COPY_FILES += \
 
 #GPS
 #FIXME: remove blob, we should build some how
-PRODUCT_COPY_FILES += \
-    device/lge/pecan/prebuilt/gps.default.so:system/lib/hw/gps.default.so \
+#PRODUCT_COPY_FILES += \
+    #device/lge/pecan/prebuilt/gps.default.so:system/lib/hw/gps.default.so \
 
 #BT init
 #FIXME: BT init workaround
@@ -51,6 +60,7 @@ PRODUCT_COPY_FILES += \
 # SD Card
 PRODUCT_COPY_FILES += \
     device/lge/pecan/files/etc/vold.fstab:system/etc/vold.fstab \
+
 
 # Audio
 PRODUCT_COPY_FILES += \
