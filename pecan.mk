@@ -2,11 +2,8 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/pecan/overlay
 
-$(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
+#$(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
 
-#2D properiaty
-PRODUCT_COPY_FILES += \
-    vendor/lge/pecan/proprietary/lib/hw/gralloc.pecan.so:/system/lib/hw/gralloc.pecan.so \
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -22,7 +19,6 @@ PRODUCT_PACKAGES += \
     FM \
     gps.pecan \
     copybit.msm7k \
-    bdaddr_read \
     gadget_id \
     gralloc.pecan \
 
@@ -38,18 +34,13 @@ PRODUCT_COPY_FILES += \
     device/lge/pecan/files/init.pecan.rc:root/init.pecan.rc \
     device/lge/pecan/files/ueventd.pecan.rc:root/ueventd.pecan.rc \
     device/lge/pecan/files/init.lge.hidden_reset.sh:root/init.lge.hidden_reset.sh \
-    device/lge/pecan/files/init.qcom.post_boot.sh:root/init.qcom.post_boot.sh \
-    device/lge/pecan/files/init.qcom.rc:root/init.qcom.rc \
+    #device/lge/pecan/files/init.qcom.post_boot.sh:root/init.qcom.post_boot.sh \
+    #device/lge/pecan/files/init.qcom.rc:root/init.qcom.rc \
+    #device/lge/pecan/files/init.pecan.rc:root/init.pecan.rc \
 
-#GPS
-#FIXME: remove blob, we should build some how
-#PRODUCT_COPY_FILES += \
-    #device/lge/pecan/prebuilt/gps.default.so:system/lib/hw/gps.default.so \
-
-#BT init
-#FIXME: BT init workaround
-#PRODUCT_COPY_FILES += \
-    #device/lge/pecan/files/etc/init.d/30initbt:system/etc/init.d/30initbt \
+# BT startup
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/init.qcom.bt.sh:system/bin/init.qcom.bt.sh
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -79,6 +70,135 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
     frameworks/base/data/etc/android.hardware.sensor.compass.xml:system/etc/permissions/android.hardware.sensor.compass.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.xml \
+
+######################PROPERIATY FILES######################
+# Sensors
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/hw/sensors.pecan.so:system/lib/hw/sensors.pecan.so \
+    vendor/lge/pecan/proprietary/lib/hw/lights.pecan.so:system/lib/hw/lights.pecan.so \
+    vendor/lge/pecan/proprietary/bin/ami304d:system/bin/ami304d \
+
+# 3D
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
+    vendor/lge/pecan/proprietary/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    vendor/lge/pecan/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    vendor/lge/pecan/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    vendor/lge/pecan/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
+    vendor/lge/pecan/proprietary/lib/libgsl.so:system/lib/libgsl.so \
+    vendor/lge/pecan/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
+    vendor/lge/pecan/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
+
+#2D
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/hw/gralloc.pecan.so:/system/lib/hw/gralloc.pecan.so \
+
+# Camera
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
+    vendor/lge/pecan/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
+    vendor/lge/pecan/proprietary/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
+
+# Wifi
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
+    vendor/lge/pecan/proprietary/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
+    vendor/lge/pecan/proprietary/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
+    vendor/lge/pecan/proprietary/etc/wl/rtecdc-mfgtest.bin:system/etc/wl/rtecdc-mfgtest.bin \
+
+# Audio
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/liba2dp.so:system/lib/liba2dp.so \
+    vendor/lge/pecan/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
+
+# LGE services
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/qmuxd:system/bin/qmuxd \
+
+# rmt_storage
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/rmt_storage:system/bin/rmt_storage \
+
+# port-bridge
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/port-bridge:system/bin/port-bridge \
+
+# wipeirface
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/wiperiface:system/bin/wiperiface \
+
+# Touchscreen firmware updater
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/tsdown:system/bin/tsdown \
+    vendor/lge/pecan/proprietary/etc/MELFAS_FIRM.bin:system/etc/MELFAS_FIRM.bin \
+
+# netmgr
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/netmgrd:system/bin/netmgrd \
+    vendor/lge/pecan/proprietary/lib/libdsutils.so:system/lib/libdsutils.so \
+    vendor/lge/pecan/proprietary/lib/libnetmgr.so:system/lib/libnetmgr.so \
+
+# RIL
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/libril-qc-1.so:system/lib/libril-qc-1.so \
+    vendor/lge/pecan/proprietary/lib/liboncrpc.so:system/lib/liboncrpc.so \
+    vendor/lge/pecan/proprietary/lib/libdsm.so:system/lib/libdsm.so \
+    vendor/lge/pecan/proprietary/lib/libqueue.so:system/lib/libqueue.so \
+    vendor/lge/pecan/proprietary/lib/libdiag.so:system/lib/libdiag.so \
+    vendor/lge/pecan/proprietary/lib/libauth.so:system/lib/libauth.so \
+    vendor/lge/pecan/proprietary/lib/libcm.so:system/lib/libcm.so \
+    vendor/lge/pecan/proprietary/lib/libnv.so:system/lib/libnv.so \
+    vendor/lge/pecan/proprietary/lib/libpbmlib.so:system/lib/libpbmlib.so \
+    vendor/lge/pecan/proprietary/lib/libwms.so:system/lib/libwms.so \
+    vendor/lge/pecan/proprietary/lib/libwmsts.so:system/lib/libwmsts.so \
+    vendor/lge/pecan/proprietary/lib/libmmgsdilib.so:system/lib/libmmgsdilib.so \
+    vendor/lge/pecan/proprietary/lib/libgsdi_exp.so:system/lib/libgsdi_exp.so \
+    vendor/lge/pecan/proprietary/lib/libgstk_exp.so:system/lib/libgstk_exp.so \
+    vendor/lge/pecan/proprietary/lib/libril-qcril-hook-oem.so:system/lib/libril-qcril-hook-oem.so \
+    vendor/lge/pecan/proprietary/lib/liboem_rapi.so:system/lib/liboem_rapi.so \
+    vendor/lge/pecan/proprietary/lib/libsnd.so:system/lib/libsnd.so \
+    vendor/lge/pecan/proprietary/lib/libqmi.so:system/lib/libqmi.so \
+    vendor/lge/pecan/proprietary/lib/libdll.so:system/lib/libdll.so \
+    vendor/lge/pecan/proprietary/lib/liblgeat.so:system/lib/liblgeat.so \
+    vendor/lge/pecan/proprietary/lib/liblgdrm.so:system/lib/liblgdrm.so \
+    vendor/lge/pecan/proprietary/lib/liblgdrmwbxml.so:system/lib/liblgdrmwbxml.so \
+    vendor/lge/pecan/proprietary/lib/liblgerft.so:system/lib/liblgerft.so \
+    vendor/lge/pecan/proprietary/lib/libbcmwl.so:system/lib/libbcmwl.so \
+    vendor/lge/pecan/proprietary/lib/libdss.so:system/lib/libdss.so \
+    vendor/lge/pecan/proprietary/bin/rild:system/bin/rild \
+    vendor/lge/pecan/proprietary/lib/libril.so:system/lib/libril.so \
+    vendor/lge/pecan/proprietary/lib/libloc-rpc.so:system/lib/libloc-rpc.so \
+    vendor/lge/pecan/proprietary/lib/libloc.so:system/lib/libloc.so \
+    vendor/lge/pecan/proprietary/lib/libcommondefs.so:system/lib/libcommondefs.so \
+
+# OMX
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxEvrcDec.so:system/lib/libOmxEvrcDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
+    vendor/lge/pecan/proprietary/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
+    vendor/lge/pecan/proprietary/lib/libOmxQcelpDec.so:system/lib/libOmxQcelpDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
+    vendor/lge/pecan/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
+    vendor/lge/pecan/proprietary/lib/libOmxCore.so:system/lib/libOmxCore.so \
+
+# Bluetooth
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/bin/BCM43291A0_003.001.013.0060.Pecan.hcd:system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd \
+
+
+######################END OF PROPERIATY FILES######################
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/lge/pecan/prebuilt/kernel
