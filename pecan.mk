@@ -18,6 +18,7 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     FM \
     gps.pecan \
+    hwaddrs \
     copybit.msm7k \
     gadget_id \
     gralloc.pecan \
