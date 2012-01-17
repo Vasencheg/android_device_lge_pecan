@@ -41,6 +41,7 @@ adb pull /system/etc/firmware/yamato_pm4.fw ../../../vendor/$MANUFACTURER/$DEVIC
 
 #2D
 adb pull /system/lib/hw/gralloc.default.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib/hw/gralloc.default.so
+adb pull /system/lib/hw/gralloc.pecan.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib/hw/gralloc.pecan.so
 
 # Camera
 adb pull /system/lib/liboemcamera.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib

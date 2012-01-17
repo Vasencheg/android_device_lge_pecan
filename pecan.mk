@@ -21,7 +21,7 @@ PRODUCT_PACKAGES += \
     hwaddrs \
     copybit.msm7k \
     gadget_id \
-    gralloc.pecan \
+    bash \
 
 #    gralloc.pecan \
 #    copybit.pecan
@@ -38,6 +38,11 @@ PRODUCT_COPY_FILES += \
     #device/lge/pecan/files/init.qcom.post_boot.sh:root/init.qcom.post_boot.sh \
     #device/lge/pecan/files/init.qcom.rc:root/init.qcom.rc \
     #device/lge/pecan/files/init.pecan.rc:root/init.pecan.rc \
+
+#Configs
+PRODUCT_COPY_FILES += \
+    device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl
+    device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/qwerty.kl
 
 # BT startup
 PRODUCT_COPY_FILES += \
