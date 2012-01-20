@@ -19,6 +19,7 @@ PRODUCT_PACKAGES += \
     FM \
     gps.pecan \
     hwaddrs \
+    gralloc.pecan \
     copybit.msm7k \
     gadget_id \
     bash \
@@ -41,8 +42,8 @@ PRODUCT_COPY_FILES += \
 
 #Configs
 PRODUCT_COPY_FILES += \
-    device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl
-    device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/qwerty.kl
+    device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
+    device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
 
 # BT startup
 PRODUCT_COPY_FILES += \
@@ -95,9 +96,10 @@ PRODUCT_COPY_FILES += \
     vendor/lge/pecan/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/pecan/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
 
-#2D
-PRODUCT_COPY_FILES += \
-    vendor/lge/pecan/proprietary/lib/hw/gralloc.pecan.so:/system/lib/hw/gralloc.pecan.so \
+#2D TEST
+#PRODUCT_COPY_FILES += \
+    #vendor/lge/pecan/proprietary/lib/hw/gralloc.pecan.so:/system/lib/hw/gralloc.pecan.so \
+    #vendor/lge/pecan/proprietary/lib/hw/copbit.pecan.so:/system/lib/hw/copbit.pecan.so \
 
 # Camera
 PRODUCT_COPY_FILES += \
