@@ -48,6 +48,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
     device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/AVRCP.kl \
 
 # BT startup
 PRODUCT_COPY_FILES += \

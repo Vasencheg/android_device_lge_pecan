@@ -1,0 +1,50 @@
+CyanogenMod for LG P350
+=======================
+
+How to init repository
+----------------------
+
+You need to have your environment configured exatly like here: 
+
+   http://source.android.com/source/initializing.html 
+
+Next download a repo client (part Installing Repo )
+
+   http://source.android.com/source/downloading.html
+
+After this steps you can initialize your repository for building CM for P350.
+
+First initialize local repository with my Mainfest - this will get you CM 7.2 without not needed devices (less to download) and with pecan avaible for build.
+
+    repo init -u git://github.com/pax0r/android.git -b gingerbread
+
+Then sync up:
+
+    repo sync
+
+This may took few hours depending on your internet speed.
+
+This way you will get repo with P350 device folder.
+
+How to build
+------------
+First you will need to get properiaty drivers from running device.
+This step assumes you have adb installed and configured - google for it if you dont.
+
+Connect your device via USB and do the following commands (from the root of your CM repository):
+
+    cd device/lge/pecan
+    ./extract-files.sh
+    cd ../../..
+
+And start the build:
+
+    . build/envsetup.sh && brunch pecan
+
+Now Andorid is building. Now you need to wait quite a long time (depending on your hardware) for the message:
+
+    Package complete: /home/pax0r/android/system/out/target/product/pecan/update-cm-7.2.0-RC0-SwiftMe-KANG-signed.zip
+
+Now in folder out/target/pecan/ you will find flashable zip called update-cm-7.2.0-RC0-SwiftMe-KANG-signed.zip with your built ROM. Flash it and enjoy! Voila!
+For more info check:
+[CyanogenMod Wiki](http://wiki.cyanogenmod.com/) and README_cm.mkdn
