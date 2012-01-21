@@ -13,7 +13,7 @@
     <bool name="has_dual_notification_led">true</bool>
 
     <!-- LED Flashlight -->
-    <bool name="has_led_flash">true</bool>
+    <bool name="has_led_flash">false</bool>
 
     <!-- Whether or not to display search button settings -->
     <bool name="has_search_button">true</bool>

@@ -1,4 +1,7 @@
+# Inherit from those products. Most specific first
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/pecan/overlay
 
@@ -20,9 +23,10 @@ PRODUCT_PACKAGES += \
     gps.pecan \
     hwaddrs \
     gralloc.pecan \
-    copybit.msm7k \
+    copybit.pecan \
     gadget_id \
     bash \
+    dexpreopt \
 
 #    gralloc.pecan \
 #    copybit.pecan
@@ -217,11 +221,7 @@ endif
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
 
-#PRODUCT_LOCALES += ldpi
-
-$(call inherit-product, build/target/product/full.mk)
-
-$(call inherit-product, device/common/gps/gps_eu_supl.mk)
+PRODUCT_LOCALES += ldpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := lge_pecan
