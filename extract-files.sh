@@ -135,4 +135,5 @@ adb pull /system/lib/libOmxCore.so ../../../vendor/$MANUFACTURER/$DEVICE/proprie
 # Bluetooth
 adb pull /system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bin
 
-#./setup-makefiles.sh
+#Keycharacter Map
+adb pull /system/usr/keychars/pecan_keypad.kcm.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/usr/keychars

@@ -5,8 +5,6 @@ $(call inherit-product, device/common/gps/gps_eu_supl.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/lge/pecan/overlay
 
-#$(call inherit-product-if-exists, vendor/lge/pecan/pecan-vendor.mk)
-
 
 PRODUCT_PACKAGES += \
     librs_jni \
@@ -21,15 +19,13 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     FM \
     gps.pecan \
-    hwaddrs \
     gralloc.pecan \
     copybit.pecan \
     gadget_id \
     bash \
     dexpreopt \
-
-#    gralloc.pecan \
-#    copybit.pecan
+    #could this be the reason of not working tethering?
+    #hwaddrs \
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -47,8 +43,8 @@ PRODUCT_COPY_FILES += \
 #Configs
 PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-    device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/lge/pecan/configs/qwerty.kl:system/usr/keylayout/AVRCP.kl \
+    device/lge/pecan/configs/pecan_keypad.kl:system/usr/keylayout/pecan_keypad.kl \
+    device/lge/pecan/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 
 # BT startup
 PRODUCT_COPY_FILES += \
@@ -121,8 +117,8 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    vendor/lge/pecan/proprietary/lib/liba2dp.so:system/lib/liba2dp.so \
     vendor/lge/pecan/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so \
+    #vendor/lge/pecan/proprietary/lib/liba2dp.so:system/lib/liba2dp.so \
 
 # LGE services
 PRODUCT_COPY_FILES += \
@@ -210,6 +206,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/lge/pecan/proprietary/bin/BCM43291A0_003.001.013.0060.Pecan.hcd:system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd \
 
+# Key Character Map
+PRODUCT_COPY_FILES += \
+    vendor/lge/pecan/proprietary/usr/keychars/pecan_keypad.kcm.bin:system/usr/keychars/pecan_keypad.kcm.bin \
 
 ######################END OF PROPERIATY FILES######################
 
