@@ -20,12 +20,11 @@ PRODUCT_PACKAGES += \
     FM \
     gps.pecan \
     gralloc.pecan \
-    copybit.pecan \
     gadget_id \
     bash \
     dexpreopt \
-    #could this be the reason of not working tethering?
-    #hwaddrs \
+    hwaddrs \
+    copybit.pecan \
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
@@ -43,7 +42,7 @@ PRODUCT_COPY_FILES += \
 #Configs
 PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-    device/lge/pecan/configs/pecan_keypad.kl:system/usr/keylayout/pecan_keypad.kl \
+    device/lge/pecan/configs/touch_mcs6000.kl:system/usr/keylayout/touch_mcs6000.kl \
     device/lge/pecan/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 
 # BT startup
@@ -88,7 +87,6 @@ PRODUCT_COPY_FILES += \
 
 # 3D
 PRODUCT_COPY_FILES += \
-    vendor/lge/pecan/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     vendor/lge/pecan/proprietary/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
     vendor/lge/pecan/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
     vendor/lge/pecan/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
@@ -96,11 +94,6 @@ PRODUCT_COPY_FILES += \
     vendor/lge/pecan/proprietary/lib/libgsl.so:system/lib/libgsl.so \
     vendor/lge/pecan/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
     vendor/lge/pecan/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-
-#2D TEST
-#PRODUCT_COPY_FILES += \
-    #vendor/lge/pecan/proprietary/lib/hw/gralloc.pecan.so:/system/lib/hw/gralloc.pecan.so \
-    #vendor/lge/pecan/proprietary/lib/hw/copbit.pecan.so:/system/lib/hw/copbit.pecan.so \
 
 # Camera
 PRODUCT_COPY_FILES += \
@@ -208,7 +201,7 @@ PRODUCT_COPY_FILES += \
 
 # Key Character Map
 PRODUCT_COPY_FILES += \
-    vendor/lge/pecan/proprietary/usr/keychars/pecan_keypad.kcm.bin:system/usr/keychars/pecan_keypad.kcm.bin \
+    vendor/lge/pecan/proprietary/usr/keychars/touch_mcs6000.kcm.bin:system/usr/keychars/touch_mcs6000.kcm.bin \
 
 ######################END OF PROPERIATY FILES######################
 

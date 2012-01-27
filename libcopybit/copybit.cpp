@@ -121,7 +121,7 @@ static int get_format(int format) {
     switch (format) {
     case HAL_PIXEL_FORMAT_RGB_565:       return MDP_RGB_565;
 //FIXME: dirty hax ;(
-    case HAL_PIXEL_FORMAT_RGBX_8888:     return MDP_RGB_888;
+    case HAL_PIXEL_FORMAT_RGBX_8888:     return MDP_RGBA_8888;
     case HAL_PIXEL_FORMAT_RGB_888:       return MDP_RGB_888;
     case HAL_PIXEL_FORMAT_RGBA_8888:     return MDP_RGBA_8888;
     case HAL_PIXEL_FORMAT_BGRA_8888:     return MDP_BGRA_8888;
