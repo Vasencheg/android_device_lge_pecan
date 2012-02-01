@@ -80,6 +80,9 @@ ro.media.cam.preview.fps=0
 ro.media.dec.jpeg.memcap=20000000
 ro.media.enc.jpeg.quality=100,90,80
 
+#change suggested by danieliop from xda
+ro.media.lprof.vid.fps=24
+
 # LGE_CHANGE_S, [jeongmini.park@lge.com], 2010-05-03, < Enabed EONS feature >
 persist.cust.tel.eons=1
 # LGE_CHANGE_E, [jeongmini.park@lge.com], 2010-05-03, < Enabed EONS feature >
