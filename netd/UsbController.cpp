@@ -37,24 +37,29 @@ UsbController::~UsbController() {
 }
 
 int UsbController::startRNDIS() {
-    LOGD("Usb RNDIS start");
-    return enableRNDIS(true);
+	LOGD("Usb RNDIS start");
+	return enableRNDIS(true);
 }
 
 int UsbController::stopRNDIS() {
-    LOGD("Usb RNDIS stop");
-    return enableRNDIS(false);
+	LOGD("Usb RNDIS stop");
+	return enableRNDIS(false);
 }
 
+
 int UsbController::enableRNDIS(bool enable) {
-    property_set("net.usb_tethering", enable ? "1" : "0");
-    return 0;
+	char value[20];
+	int fd = open("/sys/module/g_android/parameters/product_id", O_RDWR);
+	int count = snprintf(value, sizeof(value), "%s\n", (enable ? "61a1" : "618e"));
+	write(fd, value, count);
+	close(fd);
+	return 0;
 }
 
 bool UsbController::isRNDISStarted() {
-    char value[5];
-    int fd = open("/sys/module/g_android/parameters/product_id", O_RDONLY);
-    read(fd, &value, 5);
-    close(fd);
-    return (!strncmp(value,"61a1",4) ? true : false);
+	char value[5];
+	int fd = open("/sys/module/g_android/parameters/product_id", O_RDONLY);
+	read(fd, &value, 5);
+	close(fd);
+	return (!strncmp(value,"61a1",4) ? true : false);
 }
