@@ -206,7 +206,7 @@ PRODUCT_COPY_FILES += \
 ######################END OF PROPERIATY FILES######################
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := device/lge/pecan/prebuilt/kernel
+	LOCAL_KERNEL := device/lge/pecan/prebuilt/zImage
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif

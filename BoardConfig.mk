@@ -95,7 +95,7 @@ BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 TARGET_SF_NEEDS_REAL_DIMENSIONS := true
 
-TARGET_PREBUILT_KERNEL := device/lge/pecan/kernel
+TARGET_PREBUILT_KERNEL := device/lge/pecan/prebuilt/zImage
 
 #BOARD_HAS_NO_SELECT_BUTTON := true
 # Use this flag if the board has a ext4 partition larger than 2gb
