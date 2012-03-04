@@ -24,11 +24,31 @@ PRODUCT_PACKAGES += \
     bash \
     dexpreopt \
     hwaddrs \
+    bdaddr_read \
     copybit.pecan \
 
 # Publish that we support the live wallpaper feature.
 PRODUCT_COPY_FILES += \
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml \
+
+# chargermode
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_ani_01.rle:root/chargerimages/battery_ani_01.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_ani_02.rle:root/chargerimages/battery_ani_02.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_ani_03.rle:root/chargerimages/battery_ani_03.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_ani_04.rle:root/chargerimages/battery_ani_04.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_ani_05.rle:root/chargerimages/battery_ani_05.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_bg.rle:root/chargerimages/battery_bg.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_charging_01.rle:root/chargerimages/battery_charging_01.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_charging_02.rle:root/chargerimages/battery_charging_02.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_charging_03.rle:root/chargerimages/battery_charging_03.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_charging_04.rle:root/chargerimages/battery_charging_04.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_charging_05.rle:root/chargerimages/battery_charging_05.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_charging_06.rle:root/chargerimages/battery_charging_06.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_wait_ani_01.rle:root/chargerimages/battery_wait_ani_01.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/battery_wait_ani_02.rle:root/chargerimages/battery_wait_ani_02.rle \
+    $(LOCAL_PATH)/chargemode/chargerimages/black_bg.rle:root/chargerimages/black_bg.rle \
+    $(LOCAL_PATH)/chargemode/chargerlogo:root/sbin/chargerlogo
 
 # Board-specific init
 PRODUCT_COPY_FILES += \
@@ -42,7 +62,7 @@ PRODUCT_COPY_FILES += \
 #Configs
 PRODUCT_COPY_FILES += \
     device/lge/pecan/configs/7k_handset.kl:system/usr/keylayout/7k_handset.kl \
-    device/lge/pecan/configs/touch_mcs6000.kl:system/usr/keylayout/touch_mcs6000.kl \
+    device/lge/pecan/configs/touch_mcs7000.kl:system/usr/keylayout/touch_mcs7000.kl \
     device/lge/pecan/configs/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
 
 # BT startup
@@ -201,7 +221,8 @@ PRODUCT_COPY_FILES += \
 
 # Key Character Map
 PRODUCT_COPY_FILES += \
-    vendor/lge/pecan/proprietary/usr/keychars/touch_mcs6000.kcm.bin:system/usr/keychars/touch_mcs6000.kcm.bin \
+    vendor/lge/pecan/proprietary/usr/keychars/touch_mcs7000.kcm.bin:system/usr/keychars/touch_mcs7000.kcm.bin \
+    vendor/lge/pecan/proprietary/usr/keychars/touch_mcs7000.kcm.bin:system/usr/keychars/pecan_keypad.kcm.bin \
 
 ######################END OF PROPERIATY FILES######################
 

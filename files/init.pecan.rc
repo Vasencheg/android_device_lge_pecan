@@ -1,3 +1,5 @@
+## hopemini@lge.com, 20100416
+
 on boot-pause
     exec sbin/chargerlogo
 
@@ -7,23 +9,35 @@ on boot
 
     mkdir /data/radio 0770 radio radio
 
+    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+    chown system system /sys/module/sco/parameters/disable_esco
+    chmod 0660 /sys/module/bluetooth_power/parameters/power
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chmod 0666 /dev/msm_snd
+
 ## LGE's bluetooth stuff
 # bluetooth permissions
-    chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /dev/ttyHS0
-    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill0/type
+#    chmod 0660 /dev/ttyHS0
+#    chown bluetooth bluetooth /dev/ttyHS0
+#    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+#    chmod 0660 /sys/class/rfkill/rfkill0/state
+#    chmod 0660 /sys/class/rfkill/rfkill0/type
 
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    write /sys/class/rfkill/rfkill0/state 0
+#    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+#    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+#    write /sys/class/rfkill/rfkill0/state 0
 
 # +++ BRCM +++
-# Make sure the property critical to Bluetooth functionality to be reserved by creating while booting up.
+    # Make sure the property critical to Bluetooth functionality to be reserved by creating while booting up.
     setprop service.brcm.bt.srv_active 0
-	setprop service.brcm.bt.hcid_active 0
-	setprop sys.settings_secure_version 0
+    setprop service.brcm.bt.hcid_active 0
+    setprop sys.settings_secure_version 0
 # --- BRCM ---
 ### End of LGE bluetooth
 
@@ -49,7 +63,7 @@ on boot
 	chown system system /dev/KR3DH
 	chmod 0666 /dev/KR3DH
 	chown system system /dev/KR3DM
-	chmod 0666 /dev/KR3DM	
+	chmod 0666 /dev/KR3DM
 ## PROXIMITY SENSOR
 	chmod 0666 /sys/bus/i2c/drivers/proximity_gp2ap/4-0044/enable
 
@@ -67,27 +81,40 @@ service ami304d /system/bin/ami304d
     user compass
     group system
 
-service hciattach /system/bin/sh /system/bin/init.qcom.bt.sh
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
 
-# Collect ramconsole data
-	copy /proc/last_kmsg /data/dontpanic/last_kmsg
-	chown root log /data/dontpanic/last_kmsg
-	chmod 0640 /data/dontpanic/last_kmsg
+#service hciattach /system/bin/sh /system/bin/init.qcom.bt.sh
+#service hciattach /system/bin/brcm_patchram_plus --enable_hci --baudrate 4000000 --patchram /system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd /dev/ttyHS0
+#service hciattach /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 3000000 --patchram /system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd /dev/ttyHS0
+service hciattach /system/bin/brcm_patchram_plus --enable_hci --baudrate 3000000 --patchram /system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd /dev/ttyHS0
+	user bluetooth
+	group bluetooth net_bt_admin
+	disabled
 
-# LGE_CHANGE_S suntae.joo@lge.com 2010-07-14
-# create logging directory
-	mkdir /data/logger 0771 system system
-# LGE_CHANGE_E suntae.joo@lge.com 2010-07-14
-## Hidden reset for the kernel interface
-   chmod 0666 /sys/module/lge_handle_panic/parameters/hidden_reset_enable
-on property:ro.build.type=user
-	write /sys/module/lge_handle_panic/parameters/hidden_reset_enable 1
+service bdaddr /system/bin/bdaddr_read
+	user root
+	disabled
+	oneshot
+
+on property:init.svc.bootanim=running
+	start bdaddr
 
 on property:init.svc.hcid=running
 	write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
+
+# Collect ramconsole data
+#	copy /proc/last_kmsg /data/dontpanic/last_kmsg
+#	chown root log /data/dontpanic/last_kmsg
+#	chmod 0640 /data/dontpanic/last_kmsg
+
+# LGE_CHANGE_S suntae.joo@lge.com 2010-07-14
+# create logging directory
+#	mkdir /data/logger 0771 system system
+# LGE_CHANGE_E suntae.joo@lge.com 2010-07-14
+## Hidden reset for the kernel interface
+#   chmod 0666 /sys/module/lge_handle_panic/parameters/hidden_reset_enable
+#on property:ro.build.type=user
+#	write /sys/module/lge_handle_panic/parameters/hidden_reset_enable 1
+
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -BKA wlan0
     disabled
@@ -111,6 +138,14 @@ service gadget_id /system/bin/gadget_id
     disabled
     oneshot
 
+service hwaddrs /system/bin/hwaddrs
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=running
+    start hwaddrs
+
 service cnd /system/bin/cnd
     socket cnd stream 660 root radio
     socket cne stream 660 root radio
@@ -127,5 +162,5 @@ on property:net.usb_tethering=1
 on property:net.usb_tethering=0
     start gadget_id
 
-on property:dev.bootcomplete=1
-    exec /system/bin/hwaddrs
+#on property:dev.bootcomplete=1
+#    exec /system/bin/hwaddrs

@@ -17,7 +17,7 @@
 DEVICE=pecan
 MANUFACTURER=lge
 
-#TODO: we should use somehow absolute paths to the root of source tree - so we could use this command at every point of the tree 
+#TODO: we should use somehow absolute paths to the root of source tree - so we could use this command at every point of the tree
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib/hw
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bin
@@ -136,6 +136,6 @@ adb pull /system/lib/libOmxCore.so ../../../vendor/$MANUFACTURER/$DEVICE/proprie
 # Bluetooth
 adb pull /system/bin/BCM43291A0_003.001.013.0060.Pecan.hcd ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bin
 
-#Keycharacter Map - there may be two version - pecan_keypad.kcm.bin is for stock ROM and touch_mcs6000.kcm.bin for CM builds so one of this pulls will fail
-adb pull /system/usr/keychars/pecan_keypad.kcm.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/usr/keychars/touch_mcs6000.kcm.bin
-adb pull /system/usr/keychars/touch_mcs6000.kcm.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/usr/keychars/touch_mcs6000.kcm.bin
+#Keycharacter Map - there may be two version - pecan_keypad.kcm.bin is for stock ROM and touch_mcs7000.kcm.bin for CM builds so one of this pulls will fail
+adb pull /system/usr/keychars/pecan_keypad.kcm.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/usr/keychars/touch_mcs7000.kcm.bin
+adb pull /system/usr/keychars/touch_mcs7000.kcm.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/usr/keychars/touch_mcs7000.kcm.bin
