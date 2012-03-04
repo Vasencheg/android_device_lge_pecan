@@ -16,7 +16,7 @@ After this steps you have everything configured and can initialize your reposito
 
 First initialize local repository with my Mainfest - this will get you CM 7.2 without not needed devices (less to download) and with pecan avaible for build.
 
-    repo init -u git://github.com/pax0r/android.git -b gingerbread
+    repo init -u git://github.com/pax0r/android.git -b gb-release-7.2
 
 Then sync up:
 
